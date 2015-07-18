@@ -31,8 +31,9 @@ module.exports = class Playem extends React.Component {
       playem.on("onTrackInfo", (track) => {
         this.setState({status: "Playing " + track.playerName + " track, id: " + track.trackId});
       });
-      playem.addTrackByUrl("https://www.youtube.com/watch?v=fuhHU_BZXSk");
-      playem.addTrackByUrl("https://www.dailymotion.com/video/x25ohb");
+      this.props.tracks.map((track) => {
+        playem.addTrackByUrl(track.eId);
+      });
       playem.play();
     });
   }
@@ -42,6 +43,14 @@ module.exports = class Playem extends React.Component {
         <p>Playem component "{this.props.name}" has been running for {this.state.secs} seconds.</p>
         <p>Current status: {this.state.status}</p>
         <div id="container"></div>
+        <p>Playlist:</p>
+        <ol>
+        {
+          this.props.tracks.map((track) => {
+            return <li>{track.name}</li>
+          })
+        }
+        </ol>
       </div>
     );
   }
