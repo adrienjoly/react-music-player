@@ -6,19 +6,27 @@
   "dependencies": {
     "browserify": "^11.0.0",
     "playemjs": "^0.1.1",
-    "reactify": "^1.1.1"
+    "reactify": "^1.1.1",
+    "watchify": "^3.3.0"
   },
   "devDependencies": {},
   "browserify": {
     "transform": [
-      ["reactify", {"es6": true}]
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
     ]
   },
   "scripts": {
     "browserify": "browserify",
     "build": "browserify jsx/main.jsx -o build/bundle.jsx",
-    "prestart": "npm run build",
-    "start": "python -m SimpleHTTPServer 3000",
+    "postinstall": "npm run build",
+    "watchify": "watchify jsx/main.jsx -o build/bundle.jsx",
+    "start": "echo \"run 'npm run serve' in another terminal to start the http server.\" && npm run watchify",
+    "serve": "python -m SimpleHTTPServer 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
