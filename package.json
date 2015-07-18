@@ -4,10 +4,20 @@
   "description": "A web app made with react.js, that can play a list of tracks from various streaming services",
   "main": "index.js",
   "dependencies": {
-    "playemjs": "^0.1.1"
+    "browserify": "^11.0.0",
+    "playemjs": "^0.1.1",
+    "reactify": "^1.1.1"
   },
   "devDependencies": {},
+  "browserify": {
+    "transform": [
+      ["reactify", {"es6": true}]
+    ]
+  },
   "scripts": {
+    "browserify": "browserify",
+    "build": "browserify jsx/main.jsx -o build/bundle.jsx",
+    "post-install": "npm run build",
     "start": "python -m SimpleHTTPServer 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
