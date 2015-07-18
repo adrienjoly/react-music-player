@@ -1,0 +1,35 @@
+{
+  "name": "react-music-player",
+  "version": "0.0.1",
+  "description": "A web app made with react.js, that can play a list of tracks from various streaming services",
+  "main": "index.js",
+  "dependencies": {
+    "playemjs": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "python -m SimpleHTTPServer 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrienjoly/react-music-player.git"
+  },
+  "keywords": [
+    "music",
+    "playlist",
+    "streaming",
+    "player",
+    "youtube",
+    "soundcloud",
+    "bandcamp",
+    "deezer",
+    "jamendo"
+  ],
+  "author": "Adrien Joly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrienjoly/react-music-player/issues"
+  },
+  "homepage": "https://github.com/adrienjoly/react-music-player#readme"
+}

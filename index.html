@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Basic Example with JSX and ES6 features</title>
+  </head>
+  <body>
+    <h1>Basic Example with JSX and ES6 features</h1>
+    <div id="container">
+      <p>If you can see this, React is not working right. Make sure to run <code>grunt</code>.</p>
+      <p>To install React, follow the instructions on <a href="https://github.com/facebook/react/">GitHub</a>.</p>
+    </div>
+    <h4>Example Details</h4>
+    <p>This is written with JSX with Harmony (ES6) syntax and transformed in the browser.<p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script type="text/jsx;harmony=true">
+      class ExampleApplication extends React.Component {
+        render() {
+          var elapsed = Math.round(this.props.elapsed  / 100);
+          var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+          var message =
+            `React has been successfully running for ${seconds} seconds.`;
+
+          return <p>{message}</p>;
+        }
+      }
+      var start = new Date().getTime();
+      setInterval(() => {
+        React.render(
+          <ExampleApplication elapsed={new Date().getTime() - start} />,
+          document.getElementById('container')
+        );
+      }, 50);
+    </script>
+  </body>
+</html>
