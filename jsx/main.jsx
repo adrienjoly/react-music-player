@@ -22,12 +22,23 @@ class Playem extends React.Component {
       origin: window.location.host || window.location.hostname,
       playerContainer: document.getElementById("container")
     };
+
     window.SOUNDCLOUD_CLIENT_ID = this.props.sc_api_key || "11f9999111b5555c22227777c3333fed"; // TODO
     window.DEEZER_APP_ID = 123456789; // TODO
     window.DEEZER_CHANNEL_URL = "http://mysite.com/deezer-channel.html"; // TODO
     window.JAMENDO_CLIENT_ID = "f9ff9f0f"; // TODO
-    window.makePlayem(null, playerParams, () => {
+
+    window.makePlayem(null, playerParams, (playem) => {
       this.setState({status: "ready"});
+      playem.on("onTrackChange", (track) => {
+        this.setState({status: "Loading " + track.playerName + " track, id: " + track.trackId + "..."});
+      });
+      playem.on("onTrackInfo", (track) => {
+        this.setState({status: "Playing " + track.playerName + " track, id: " + track.trackId});
+      });
+      playem.addTrackByUrl("https://www.youtube.com/watch?v=fuhHU_BZXSk");
+      playem.addTrackByUrl("https://www.dailymotion.com/video/x25ohb");
+      playem.play();
     });
   }
   render() {
