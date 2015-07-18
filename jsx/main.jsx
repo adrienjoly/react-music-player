@@ -18,20 +18,34 @@ window.JAMENDO_CLIENT_ID = "f9ff9f0f"; // TODO
 
 })();
 
-class ExampleApplication extends React.Component {
+class Hello extends React.Component {
+  constructor() {
+    this.state = {
+      opacity: 1.0
+    };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      var opacity = this.state.opacity;
+      opacity -= .05;
+      if (opacity < 0.1) {
+        opacity = 1.0;
+      }
+      this.setState({
+        opacity: opacity
+      });
+    }, 100);
+  }
   render() {
-    var elapsed = Math.round(this.props.elapsed  / 100);
-    var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
-    var message =
-      `React has been successfully running for ${seconds} seconds.`;
-
-    return <p>{message}</p>;
+    return (
+      <div style={{opacity: this.state.opacity}}>
+        Hello {this.props.name}
+      </div>
+    );
   }
 }
-var start = new Date().getTime();
-setInterval(() => {
-  React.render(
-    <ExampleApplication elapsed={new Date().getTime() - start} />,
-    document.getElementById('react-container')
-  );
-}, 50);
+
+React.render(
+  <Hello name="world"/>,
+  document.getElementById('react-container')
+);
