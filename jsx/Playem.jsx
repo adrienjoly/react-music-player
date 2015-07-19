@@ -2,16 +2,10 @@ module.exports = class Playem extends React.Component {
   constructor() {
     require('playemjs');
     this.state = {
-      secs: 0,
       status: "loading"
     };
   }
   componentDidMount() {
-    setInterval(()=>{
-      this.setState({
-        secs: this.state.secs + 1
-      });
-    }, 1000)
     var playerParams = {
       playerId: "genericplayer",
       origin: window.location.host || window.location.hostname,
@@ -40,9 +34,8 @@ module.exports = class Playem extends React.Component {
   render() {
     return (
       <div>
-        <p>Playem component "{this.props.name}" has been running for {this.state.secs} seconds.</p>
-        <p>Current status: {this.state.status}</p>
         <div id="container"></div>
+        <p>Playem component "{this.props.name}": {this.state.status}</p>
         <p>Playlist:</p>
         <ol>
         {
