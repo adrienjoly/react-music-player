@@ -7,9 +7,9 @@ module.exports = class Playem extends React.Component {
   }
   componentDidMount() {
     var playerParams = {
-      playerId: "genericplayer",
+      playerId: "playemjs-player",
       origin: window.location.host || window.location.hostname,
-      playerContainer: document.getElementById("container")
+      playerContainer: document.getElementById("playemjs-container")
     };
 
     window.SOUNDCLOUD_CLIENT_ID = this.props.scApiKey;
@@ -34,8 +34,8 @@ module.exports = class Playem extends React.Component {
   render() {
     return (
       <div>
-        <div id="container"></div>
         <p>Playem component "{this.props.name}": {this.state.status}</p>
+        <div id="playemjs-container"></div>
         <p>Playlist:</p>
         <ol>
         {
