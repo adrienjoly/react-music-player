@@ -1,14 +1,17 @@
 var makePlayem = require('playemjs').makePlayem;
 
+var lastInstance = -1;
+
 module.exports = class Playem extends React.Component {
   constructor() {
     this.state = {
+      instance: ++lastInstance,
       status: "loading"
     };
   }
   componentDidMount() {
     var playerParams = {
-      playerId: "playemjs-player",
+      playerId: "playemjs-player-" + this.state.instance,
       origin: window.location.host || window.location.hostname,
       playerContainer: React.findDOMNode(this.refs.playemContainer)
     };
@@ -18,7 +21,7 @@ module.exports = class Playem extends React.Component {
     window.DEEZER_CHANNEL_URL = this.props.dzChannelUrl;
     window.JAMENDO_CLIENT_ID = this.props.jaApiKey;
 
-    window.makePlayem(null, playerParams, (playem) => {
+    makePlayem(null, playerParams, (playem) => {
       this.setState({status: "ready"});
       playem.on("onTrackChange", (track) => {
         this.setState({status: "Loading " + track.playerName + " track, id: " + track.trackId + "..."});
