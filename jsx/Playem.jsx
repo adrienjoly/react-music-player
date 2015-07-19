@@ -1,4 +1,4 @@
-require('playemjs'); // sets window.makePlayem()
+var makePlayem = require('playemjs').makePlayem;
 
 module.exports = class Playem extends React.Component {
   constructor() {
@@ -10,7 +10,7 @@ module.exports = class Playem extends React.Component {
     var playerParams = {
       playerId: "playemjs-player",
       origin: window.location.host || window.location.hostname,
-      playerContainer: document.getElementById("playemjs-container")
+      playerContainer: React.findDOMNode(this.refs.playemContainer)
     };
 
     window.SOUNDCLOUD_CLIENT_ID = this.props.scApiKey;
@@ -36,7 +36,7 @@ module.exports = class Playem extends React.Component {
     return (
       <div>
         <p>Playem component "{this.props.name}": {this.state.status}</p>
-        <div id="playemjs-container"></div>
+        <div ref="playemContainer"></div>
         <p>Playlist:</p>
         <ol>
         {
