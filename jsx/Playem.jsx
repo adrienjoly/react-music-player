@@ -1,6 +1,7 @@
+require('playemjs'); // sets window.makePlayem()
+
 module.exports = class Playem extends React.Component {
   constructor() {
-    require('playemjs');
     this.state = {
       status: "loading"
     };
