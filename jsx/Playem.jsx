@@ -18,10 +18,10 @@ module.exports = class Playem extends React.Component {
       playerContainer: document.getElementById("container")
     };
 
-    window.SOUNDCLOUD_CLIENT_ID = this.props.sc_api_key || "11f9999111b5555c22227777c3333fed"; // TODO
-    window.DEEZER_APP_ID = 123456789; // TODO
-    window.DEEZER_CHANNEL_URL = "http://mysite.com/deezer-channel.html"; // TODO
-    window.JAMENDO_CLIENT_ID = "f9ff9f0f"; // TODO
+    window.SOUNDCLOUD_CLIENT_ID = this.props.scApiKey;
+    window.DEEZER_APP_ID = this.props.dzApiKey;
+    window.DEEZER_CHANNEL_URL = this.props.dzChannelUrl;
+    window.JAMENDO_CLIENT_ID = this.props.jaApiKey;
 
     window.makePlayem(null, playerParams, (playem) => {
       this.setState({status: "ready"});

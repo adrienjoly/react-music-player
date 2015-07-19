@@ -5,7 +5,10 @@ React.render(
   <Playem
     name="myplayer"
     tracks={tracks}
-    sc_api_key="11f9999111b5555c22227777c3333fed" // TODO
+    scApiKey="11f9999111b5555c22227777c3333fed" // TODO
+    dzApiKey="123456789" // TODO
+    dzChannelUrl="http://mysite.com/deezer-channel.html" // TODO
+    jaApiKey="f9ff9f0f" // TODO
   />,
   document.getElementById('react-container')
 );
