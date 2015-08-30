@@ -24,10 +24,21 @@ module.exports = class Playem extends React.Component {
     makePlayem(null, playerParams, (playem) => {
       this.setState({status: "ready"});
       playem.on("onTrackChange", (track) => {
+        console.log(this.state.instance, "changed")
         this.setState({status: "Loading " + track.playerName + " track, id: " + track.trackId + "..."});
       });
       playem.on("onTrackInfo", (track) => {
+        console.log(this.state.instance, "info")
         this.setState({status: "Playing " + track.playerName + " track, id: " + track.trackId});
+      });
+      playem.on("onPlay", (track) => {
+        console.log(this.state.instance, "play")
+      });
+      playem.on("onPlaying", (track) => {
+        console.log(this.state.instance, "playing")
+      });
+      playem.on("onPaused", (track) => {
+        console.log(this.state.instance, "pause")
       });
       this.props.tracks.map((track) => {
         playem.addTrackByUrl(track.eId);
