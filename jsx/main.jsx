@@ -1,4 +1,4 @@
-var Playem = require("./Playem.jsx");
+var Playem = require("react-playemjs");
 var tracks = require("../tracks.json");
 
 React.render(
